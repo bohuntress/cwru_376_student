@@ -26,7 +26,7 @@ twist_cmd.angular.x = 0.0;
 twist_cmd.angular.y = 0.0;
 twist_cmd.angular.z = 0.0;
 
-twist_cmd.linear.x = 0.4;
+twist_cmd.linear.x = 0.5;
 
 
 // timer test...print out a message every 1 second
@@ -37,7 +37,7 @@ for (int j=3;j>0;j--) {
         sleep_timer.sleep();
 }
 
-int niters = 1200; //1000 iters at 100Hz is 10 seconds;
+int niters = 1000; //1000 iters at 100Hz is 10 seconds;
 //iteration counter; at 10ms/iteration, and 0.2m/sec, expect 2mm/iter
 // should move by 2m over 10 sec
 for (int i=0;i<niters;i++) {
@@ -45,8 +45,46 @@ for (int i=0;i<niters;i++) {
     sleep_timer.sleep(); // sleep for (remainder of) 10m
 }
 twist_cmd.linear.x = 0.0;
-twist_cmd.angular.z = -0.314;
-niters=500; // 5 sec
+ twist_cmd.angular.z = -1.57;niters=500; // 5 sec
+ROS_INFO("Time to rotate negative");
+for (int i=0;i<niters;i++) {
+    cmd_publisher.publish(twist_cmd); // really, should only need to publish this once, but no hard done
+    sleep_timer.sleep(); // sleep for (remainder of) 10m
+}
+twist_cmd.linear.x = 0.5;
+twist_cmd.angular.z = 0.0;
+ niters=2500;// 20 sec
+ROS_INFO("Time to rotate negative");
+for (int i=0;i<niters;i++) {
+    cmd_publisher.publish(twist_cmd); // really, should only need to publish this once, but no hard done
+    sleep_timer.sleep(); // sleep for (remainder of) 10m
+}
+twist_cmd.linear.x = 0.0;
+ twist_cmd.angular.z = -1.57;niters=500; // 5 sec
+ROS_INFO("Time to rotate negative");
+for (int i=0;i<niters;i++) {
+    cmd_publisher.publish(twist_cmd); // really, should only need to publish this once, but no hard done
+    sleep_timer.sleep(); // sleep for (remainder of) 10m
+}
+twist_cmd.linear.x = 0.5;
+twist_cmd.angular.z = 0.0;
+ niters=1800;// 20 sec
+ROS_INFO("Time to rotate negative");
+for (int i=0;i<niters;i++) {
+    cmd_publisher.publish(twist_cmd); // really, should only need to publish this once, but no hard done
+    sleep_timer.sleep(); // sleep for (remainder of) 10m
+}
+twist_cmd.linear.x = 0.0;
+twist_cmd.angular.z = -1.575;
+ niters=500;// 5 sec
+ROS_INFO("Time to rotate negative");
+for (int i=0;i<niters;i++) {
+    cmd_publisher.publish(twist_cmd); // really, should only need to publish this once, but no hard done
+    sleep_timer.sleep(); // sleep for (remainder of) 10m
+}
+twist_cmd.linear.x = 0.5;
+twist_cmd.angular.z = 0.0;
+ niters=400;// 5 sec
 ROS_INFO("Time to rotate negative");
 for (int i=0;i<niters;i++) {
     cmd_publisher.publish(twist_cmd); // really, should only need to publish this once, but no hard done
